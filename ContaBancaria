@@ -1,0 +1,39 @@
+public class BANCO {
+    public static void main(String[] args) {
+        System.out.println("Conta Bancária");
+
+        ContaCorrente conta = new ContaCorrente(12345, 6789);
+        conta.depositar(1000);
+        conta.sacar(250);
+
+        System.out.println("Saldo atual: R$" + conta.saldo());
+    }
+}
+
+class ContaCorrente {
+    private int agencia;
+    private int numero;
+    private float saldo;
+
+    public ContaCorrente(int conta, int agencia) {
+        this.numero = conta;
+        this.agencia = agencia;
+        this.saldo = 0;
+    }
+
+    public void sacar(float valor) {
+        if ((saldo - valor) >= 0)
+            saldo = saldo - valor;
+        else
+            System.out.println("Saldo insuficiente!");
+    }
+
+    public void depositar(float valor) {
+        if (valor > 0)
+            saldo = saldo + valor;
+    }
+
+    public float saldo() {
+        return saldo;
+    }
+}
